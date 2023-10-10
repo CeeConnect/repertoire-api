@@ -1,0 +1,3 @@
+[submodule "etc/db"]
+	path = etc/db
+	url = https://github.com/CeeConnect/repertoire.git
