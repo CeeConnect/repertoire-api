@@ -1,7 +1,6 @@
 from typing import Self
 from .entities import Fiche as FicheEntity
 from .entities import Bonification as BonificationEntity
-from .entities import Bonus as BonusEntity
 
 
 class Secteur:
@@ -65,7 +64,6 @@ class Bonification:
         id: str,
         code: str,
         nature: str,
-        fiche: str,
         nom: str,
         version: str,
         dateDebut: str,
@@ -74,7 +72,6 @@ class Bonification:
         self.id = id
         self.code = code
         self.nature = nature
-        self.fiche = fiche
         self.nom = nom
         self.version = version
         self.dateDebut = dateDebut
@@ -86,38 +83,6 @@ class Bonification:
             id=entity.id,
             code=entity.code,
             nature=entity.nature,
-            fiche=entity.code_fiche,
-            nom=entity.nom,
-            version=entity.version,
-            dateDebut=entity.date_debut.strftime("%Y-%m-%d"),
-            dateFin=entity.date_fin.strftime("%Y-%m-%d")
-            if entity.date_fin != None
-            else None,
-        )
-
-
-class Bonus:
-    def __init__(
-        self,
-        id: str,
-        code: str,
-        nom: str,
-        version: str,
-        dateDebut: str,
-        dateFin: str | None,
-    ):
-        self.id = id
-        self.code = code
-        self.nom = nom
-        self.version = version
-        self.dateDebut = dateDebut
-        self.dateFin = dateFin
-
-    @staticmethod
-    def fromentity(entity: BonusEntity) -> Self:
-        return Bonus(
-            id=entity.id,
-            code=entity.code,
             nom=entity.nom,
             version=entity.version,
             dateDebut=entity.date_debut.strftime("%Y-%m-%d"),

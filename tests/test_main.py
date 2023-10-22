@@ -31,32 +31,14 @@ def test_get_bonifications():
     assert isinstance(response.json(), collections.abc.Sequence)
 
 def test_get_bonification_by_id():
-    response = client.get("/bonifications/BAR-TH-171.CDP-1v52-1")
+    response = client.get("/bonifications/CDP-1v52-1")
     assert response.status_code == 200
     assert response.json() == {
-        "id": "BAR-TH-171.CDP-1v52-1",
+        "id": "CDP-1v52-1",
         "code": "CDP-1",
         "nature": "CDP",
         "version": "A52-1",
-        "fiche": "BAR-TH-171",
         "nom": "Coup de pouce Chauffage",
         "dateDebut": "2023-10-07",
-        "dateFin": None
-    }
-
-def test_get_bonus():
-    response = client.get("/bonus")
-    assert response.status_code == 200
-    assert isinstance(response.json(), collections.abc.Sequence)
-
-def test_get_bonus_by_id():
-    response = client.get("/bonus/ZNIv35-1")
-    assert response.status_code == 200
-    assert response.json() == {
-        "id": "ZNIv35-1",
-        "code": "ZNI",
-        "version": "A35-1",
-        "nom": "Zones non interconnectées au réseau métropolitain continental de transport d'électricité",
-        "dateDebut": "2021-04-17",
         "dateFin": None
     }

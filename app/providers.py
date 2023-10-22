@@ -1,5 +1,5 @@
-from .repositories import FicheRepository, BonificationRepository, BonusRepository
-from .views import Fiche, Bonification, Bonus
+from .repositories import FicheRepository, BonificationRepository
+from .views import Fiche, Bonification
 
 
 class FicheCollectionProvider:
@@ -33,18 +33,3 @@ class BonificationItemProvider:
     def provides(self, id: str) -> Bonification | None:
         entity = self.repository.find(id=id)
         return Bonification.fromentity(entity) if entity != None else None
-
-
-class BonusCollectionProvider:
-    repository = BonusRepository()
-
-    def provides(self, query: dict) -> list[Bonus]:
-        return [Bonus.fromentity(item) for item in self.repository.search(params=query)]
-
-
-class BonusItemProvider:
-    repository = BonusRepository()
-
-    def provides(self, id: str) -> Bonus | None:
-        entity = self.repository.find(id=id)
-        return Bonus.fromentity(entity) if entity != None else None

@@ -37,7 +37,6 @@ class Bonification:
         id: str,
         code: str,
         nature: str,
-        code_fiche: str,
         nom: str,
         version: str,
         date_debut: datetime,
@@ -46,25 +45,6 @@ class Bonification:
         self.id = id
         self.code = code
         self.nature = nature
-        self.code_fiche = code_fiche
-        self.nom = nom
-        self.version = version
-        self.date_debut = date_debut
-        self.date_fin = date_fin
-
-
-class Bonus:
-    def __init__(
-        self,
-        id: str,
-        code: str,
-        nom: str,
-        version: str,
-        date_debut: datetime,
-        date_fin: datetime | None,
-    ):
-        self.id = id
-        self.code = code
         self.nom = nom
         self.version = version
         self.date_debut = date_debut

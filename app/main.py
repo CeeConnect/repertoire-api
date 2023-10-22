@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from .providers import FicheItemProvider, FicheCollectionProvider
 from .providers import BonificationItemProvider, BonificationCollectionProvider
-from .providers import BonusItemProvider, BonusCollectionProvider
 
 app = FastAPI(docs_url=None, redoc_url=None)
 
@@ -47,19 +46,4 @@ async def get_bonifications(
 @app.get("/bonifications/{id}")
 async def get_bonification_by_id(id: str):
     provider = BonificationItemProvider()
-    return provider.provides(id=id)
-
-
-@app.get("/bonus")
-async def get_bonus(
-    code: str | None = None,
-    date: str | None = None,
-):
-    provider = BonusCollectionProvider()
-    return provider.provides(query={"code": code, "date": date})
-
-
-@app.get("/bonus/{id}")
-async def get_bonus_by_id(id: str):
-    provider = BonusItemProvider()
     return provider.provides(id=id)
